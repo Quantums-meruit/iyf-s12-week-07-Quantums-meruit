@@ -55,6 +55,7 @@ themeToggle.addEventListener("click", () => {
 const searchForm = document.querySelector("#search-form");
 const searchInput = document.querySelector("#search-input");
 const searchResult = document.querySelector("#search-result");
+const searchLink = document.querySelector("#search-link");
 const recentSearchSelect = document.querySelector("#recent-search-select");
 
 let recentSearches = readStorage(SEARCH_KEY, []);
@@ -93,12 +94,17 @@ function runSearch(term) {
 
   const saved = writeStorage(SEARCH_KEY, recentSearches);
   searchResult.textContent = saved
-    ? `You selected: ${cleanTerm}`
-    : `You selected: ${cleanTerm}. Browser storage is unavailable, so history was not saved.`;
+    ? `Searching the web for: ${cleanTerm}`
+    : `Searching the web for: ${cleanTerm}. Browser storage is unavailable, so history was not saved.`;
+
+  searchLink.href = `https://www.google.com/search?q=${encodeURIComponent(cleanTerm)}`;
+  searchLink.textContent = `Open search results for "${cleanTerm}"`;
+  searchLink.hidden = false;
 
   renderRecentSearches();
   searchInput.value = cleanTerm;
   recentSearchSelect.value = "";
+  window.open(searchLink.href, "_blank", "noopener,noreferrer");
 }
 
 searchForm.addEventListener("submit", (event) => {
