@@ -8,7 +8,7 @@ The main project is a To-Do List built with modular JavaScript. It saves tasks a
 
 [Open my Week 7 project on GitHub Pages](https://quantums-meruit.github.io/iyf-s12-week-07-Quantums-meruit/)
 
-The home page links to the To-Do List, Shopping Cart, and Daily Challenges. The live site should be available after the Pages deployment workflow runs successfully from main.
+The home page links to the To-Do List, Shopping Cart, and Daily Challenges. The site is deployed on GitHub Pages.
 
 ## Project features
 
@@ -130,12 +130,16 @@ The observer pattern gave me a way to keep the interface in sync with central st
 
 The repository includes a GitHub Actions workflow for GitHub Pages. It runs tests and ESLint before deploying the static site. Check the Actions tab for the latest deployment result and Settings → Pages if the live page does not load.
 
-## Collaboration and peer review
+## Collaboration (Week 7)
 
-The Week 7 guide requires a real peer review: I need to review a classmate's To-Do List pull request with inline comments and respond to the review of my own work. Those interactions must be completed with a classmate; they cannot truthfully be recorded as completed by this project documentation.
+This section is reserved for the Week 7 pair-review details. I will complete the partner information and add the actual review links once I have confirmed my classmate and their repository. I have kept the existing project work and PR history unchanged.
 
-- **My module-refactor pull request:** [Week 7 project PR #1](https://github.com/Quantums-meruit/iyf-s12-week-07-Quantums-meruit/pull/1) — merged into main. GitHub currently shows no submitted classmate review or inline review threads on this PR, so I still need to arrange and document the required peer feedback.
-- **The peer review I write:** to be added after I review a classmate's actual pull request.
+- **Team / partner:** To be added by me — classmate's name and GitHub profile.
+- **Shared repo:** To be added by me — the classmate's Week 7 To-Do List repository.
+- **PR I opened:** [Week 7 module-refactor PR #1](https://github.com/Quantums-meruit/iyf-s12-week-07-Quantums-meruit/pull/1) — merged into `main`.
+- **PR I reviewed:** To be added by me — link to the actual pull request I review, including my inline review comments.
+
+**Peer-review status:** The partner and reviewed-PR details are intentionally left as fill-in items until I complete the real collaboration. No classmate review is being claimed as completed yet.
 
 ## Further improvements
 
