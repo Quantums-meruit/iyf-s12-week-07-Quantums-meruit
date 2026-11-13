@@ -1,0 +1,31 @@
+{
+  "name": "iyf-s12-week-07-quantums-meruit",
+  "version": "1.0.0",
+  "description": "introducing modular JavaScript, persistent storage, automated tests, code quality tools, and peer code review.",
+  "homepage": "https://github.com/Quantums-meruit/iyf-s12-week-07-Quantums-meruit#readme",
+  "bugs": {
+    "url": "https://github.com/Quantums-meruit/iyf-s12-week-07-Quantums-meruit/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Quantums-meruit/iyf-s12-week-07-Quantums-meruit.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "module",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "node --test",
+    "lint": "eslint .",
+    "format": "prettier --write ."
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.5",
+    "eslint": "^9.39.5",
+    "globals": "^17.14.0",
+    "prettier": "^3.10.1"
+  },
+  "keywords": []
+}
