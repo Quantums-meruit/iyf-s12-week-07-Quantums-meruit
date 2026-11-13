@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="A persistent shopping cart mini-project built with JavaScript."
+    />
+    <title>Shopping Cart | Week 7</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script type="module" src="cart.js"></script>
+  </head>
+  <body>
+    <main class="page">
+      <header class="page-header">
+        <a class="back-link" href="../index.html">← Back to To-Do List</a>
+        <p class="eyebrow">LESSON 13 · MINI-PROJECT</p>
+        <h1>Shopping Cart</h1>
+        <p>Choose a few items, adjust quantities, and come back later — your cart is saved in this browser.</p>
+      </header>
+
+      <div class="layout">
+        <section aria-labelledby="products-title">
+          <div class="section-heading">
+            <h2 id="products-title">Products</h2>
+            <span class="muted">Sample shop · Prices in KSh</span>
+          </div>
+          <div id="product-list" class="product-grid"></div>
+        </section>
+
+        <section class="cart-panel" aria-labelledby="cart-title">
+          <div class="section-heading">
+            <h2 id="cart-title">Your cart</h2>
+            <span id="cart-count" class="count-pill">0 items</span>
+          </div>
+          <div id="cart-items" class="cart-items" aria-live="polite"></div>
+          <div class="cart-summary">
+            <div><span>Subtotal</span><strong id="cart-total">KSh 0</strong></div>
+            <button id="clear-cart" class="secondary-button" type="button">Clear cart</button>
+          </div>
+          <p id="cart-message" class="status" role="status" aria-live="polite"></p>
+        </section>
+      </div>
+    </main>
+  </body>
+</html>
