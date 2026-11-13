@@ -41,7 +41,7 @@ const numberFormat = new Intl.NumberFormat("en-KE", {
 });
 
 function formatPrice(amount) {
-  return \`KSh \${numberFormat.format(amount)}\`;
+  return `KSh ${numberFormat.format(amount)}`;
 }
 
 function subscribe(listener) {
@@ -66,7 +66,7 @@ function updateCart(nextCart, message = "") {
   const saved = saveCart();
   cartMessage.textContent = saved
     ? message
-    : \`\${message} Changes could not be saved in this browser.\`;
+    : `${message} Changes could not be saved in this browser.`;
   notify();
 }
 
@@ -145,7 +145,7 @@ function renderCart() {
 
     const linePrice = document.createElement("span");
     linePrice.className = "cart-line-price";
-    linePrice.textContent = \`\${formatPrice(product.price)} each · \${formatPrice(product.price * item.quantity)}\`;
+    linePrice.textContent = `${formatPrice(product.price)} each · ${formatPrice(product.price * item.quantity)}`;
 
     details.append(name, linePrice);
 
@@ -158,7 +158,7 @@ function renderCart() {
     decreaseButton.dataset.action = "decrease";
     decreaseButton.dataset.productId = item.productId;
     decreaseButton.textContent = "−";
-    decreaseButton.setAttribute("aria-label", \`Decrease \${product.name} quantity\`);
+    decreaseButton.setAttribute("aria-label", `Decrease ${product.name} quantity`);
 
     const quantity = document.createElement("span");
     quantity.className = "quantity";
@@ -170,7 +170,7 @@ function renderCart() {
     increaseButton.dataset.action = "increase";
     increaseButton.dataset.productId = item.productId;
     increaseButton.textContent = "+";
-    increaseButton.setAttribute("aria-label", \`Increase \${product.name} quantity\`);
+    increaseButton.setAttribute("aria-label", `Increase ${product.name} quantity`);
 
     controls.append(decreaseButton, quantity, increaseButton);
 
@@ -186,7 +186,7 @@ function renderCart() {
   });
 
   const count = getCartCount();
-  cartCount.textContent = \`\${count} \${count === 1 ? "item" : "items"}\`;
+  cartCount.textContent = `${count} ${count === 1 ? "item" : "items"}`;
   cartTotal.textContent = formatPrice(getCartTotal());
   clearCartButton.disabled = count === 0;
 }
