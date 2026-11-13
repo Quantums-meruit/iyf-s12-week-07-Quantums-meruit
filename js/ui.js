@@ -1,4 +1,7 @@
-import { getVisibleTodos } from "./todo-logic.js";
+import {
+  getVisibleTodos,
+  getActiveTodoCount,
+} from "./todo-logic.js";
 
 const todoList = document.querySelector("#todo-list");
 const itemsLeft = document.querySelector("#items-left");
@@ -45,7 +48,7 @@ export function renderTodos(state) {
     todoList.appendChild(listItem);
   });
 
-  const activeCount = state.todos.filter((todo) => !todo.completed).length;
+  const activeCount = getActiveTodoCount(state.todos);
 
   if (itemsLeft) {
     itemsLeft.textContent = `${activeCount} ${activeCount === 1 ? "item" : "items"} left`;
