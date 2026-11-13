@@ -115,14 +115,14 @@ I also learned to use ESLint to catch code-quality problems, Prettier to keep fo
 
 ## Collaboration
 
-The Week 7 peer review is completed through GitHub with the assigned partner. I will add the actual partner and pull request links here after carrying out that review. These fields are left open rather than listing an unrelated project PR as a peer-review contribution.
+I worked with Magdalene Wanyeki as my Week 7 partner. The review activity I completed is linked below. We did not use a shared repository.
 
-- **Team / partner:** [Add assigned partner's name and GitHub profile]
-- **Shared repo:** [Add the partner's Week 7 repository URL]
-- **PR I opened:** [Add the pull request I create in my partner's repository]
-- **PR I reviewed:** [Add the pull request my partner creates in my repository]
+- **Team / partner:** Magdalene Wanyeki ([GitHub profile](https://github.com/MagdaleneWanyeki))
+- **Shared repo:** Not applicable — no shared repository was used.
+- **PR I opened:** Not provided.
+- **PR I reviewed:** [Week 7 PR #1 in Ndush-gif's repository — review](https://github.com/Ndush-gif/iyf-s12-week-07-Ndush-gif/pull/1#pullrequestreview-5897680525)
 
-The original implementation work for this project is recorded separately in [Week 7 implementation PR #1](https://github.com/Quantums-meruit/iyf-s12-week-07-Quantums-meruit/pull/1), which was merged into `main`. This is not being presented as the partner peer-review PR.
+The original implementation work for this project is recorded separately in [Week 7 implementation PR #1](https://github.com/Quantums-meruit/iyf-s12-week-07-Quantums-meruit/pull/1), which was merged into `main`.
 
 ## Live Demo
 
