@@ -17,6 +17,11 @@ export default [
     },
     rules: {
       ...js.configs.recommended.rules,
+      "no-var": "error",
+      eqeqeq: "error",
+      curly: "error",
+      "prefer-const": "warn",
+      "no-unused-vars": "warn",
     },
   },
 ];
