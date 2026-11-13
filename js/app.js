@@ -1,35 +1,36 @@
-import { getState, subscribe, updateTodos, updateFilter } from "./state.js";
+import {
+  getState,
+  subscribe,
+  updateTodos,
+  updateFilter,
+} from "./state.js";
 
 import {
   addTodo,
   toggleTodo,
   deleteTodo,
   clearCompletedTodos,
+  editTodo,
 } from "./todo-logic.js";
 
 import { renderTodos } from "./ui.js";
 
-// Get the HTML elements.
 const todoForm = document.querySelector("#todo-form");
 const todoInput = document.querySelector("#todo-input");
 const todoList = document.querySelector("#todo-list");
 const clearCompletedButton = document.querySelector("#clear-completed");
 const formMessage = document.querySelector("#form-message");
 
-// Generate the next task ID.
 function getNextId() {
   const todos = getState().todos;
 
-  if (todos.length === 0) {
-    return 1;
-  }
-
-  return Math.max(...todos.map((todo) => todo.id)) + 1;
+  return todos.length === 0
+    ? 1
+    : Math.max(...todos.map((todo) => Number(todo.id) || 0)) + 1;
 }
 
 let nextId = getNextId();
 
-// Handle adding a new task.
 todoForm.addEventListener("submit", (event) => {
   event.preventDefault();
 
@@ -37,31 +38,29 @@ todoForm.addEventListener("submit", (event) => {
 
   if (!text) {
     formMessage.textContent = "Please enter a task.";
+    todoInput.focus();
     return;
   }
 
-  const updatedTodos = addTodo(getState().todos, text, nextId);
-
-  updateTodos(updatedTodos);
-
+  updateTodos(addTodo(getState().todos, text, nextId));
   nextId += 1;
   todoForm.reset();
   formMessage.textContent = "";
   todoInput.focus();
 });
 
-// Handle task actions using event delegation.
 todoList.addEventListener("change", (event) => {
   if (event.target.dataset.action !== "toggle") {
     return;
   }
 
-  const listItem = event.target.closest("li");
-  const id = Number(listItem.dataset.id);
+  const listItem = event.target.closest(".todo-item");
 
-  const updatedTodos = toggleTodo(getState().todos, id);
+  if (!listItem) {
+    return;
+  }
 
-  updateTodos(updatedTodos);
+  updateTodos(toggleTodo(getState().todos, Number(listItem.dataset.id)));
 });
 
 todoList.addEventListener("click", (event) => {
@@ -71,30 +70,74 @@ todoList.addEventListener("click", (event) => {
     return;
   }
 
-  const listItem = deleteButton.closest("li");
+  const listItem = deleteButton.closest(".todo-item");
+
+  if (!listItem) {
+    return;
+  }
+
+  updateTodos(deleteTodo(getState().todos, Number(listItem.dataset.id)));
+});
+
+todoList.addEventListener("dblclick", (event) => {
+  const todoText = event.target.closest(".todo-text");
+
+  if (!todoText) {
+    return;
+  }
+
+  const listItem = todoText.closest(".todo-item");
   const id = Number(listItem.dataset.id);
+  const originalText = todoText.textContent;
+  const editInput = document.createElement("input");
 
-  const updatedTodos = deleteTodo(getState().todos, id);
+  editInput.type = "text";
+  editInput.className = "edit-input";
+  editInput.value = originalText;
+  editInput.setAttribute("aria-label", "Edit task");
 
-  updateTodos(updatedTodos);
+  todoText.replaceWith(editInput);
+  editInput.focus();
+  editInput.select();
+
+  let finished = false;
+
+  function finishEditing(saveChanges) {
+    if (finished) {
+      return;
+    }
+
+    finished = true;
+
+    if (saveChanges && editInput.value.trim()) {
+      updateTodos(editTodo(getState().todos, id, editInput.value));
+    } else {
+      renderTodos(getState());
+    }
+  }
+
+  editInput.addEventListener("keydown", (keyEvent) => {
+    if (keyEvent.key === "Enter") {
+      finishEditing(true);
+    }
+
+    if (keyEvent.key === "Escape") {
+      finishEditing(false);
+    }
+  });
+
+  editInput.addEventListener("blur", () => finishEditing(true));
 });
 
-// Handle clearing completed tasks.
 clearCompletedButton.addEventListener("click", () => {
-  const updatedTodos = clearCompletedTodos(getState().todos);
-
-  updateTodos(updatedTodos);
+  updateTodos(clearCompletedTodos(getState().todos));
 });
 
-// Handle filter selection.
 document.querySelectorAll(".filter").forEach((button) => {
   button.addEventListener("click", () => {
     updateFilter(button.dataset.filter);
   });
 });
 
-// Render the interface whenever state changes.
 subscribe(renderTodos);
-
-// Display the initial application state.
 renderTodos(getState());
