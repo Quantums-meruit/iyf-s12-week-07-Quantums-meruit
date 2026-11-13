@@ -55,7 +55,7 @@ themeToggle.addEventListener("click", () => {
 const searchForm = document.querySelector("#search-form");
 const searchInput = document.querySelector("#search-input");
 const searchResult = document.querySelector("#search-result");
-const recentSearchList = document.querySelector("#recent-searches");
+const recentSearchSelect = document.querySelector("#recent-search-select");
 
 let recentSearches = readStorage(SEARCH_KEY, []);
 if (!Array.isArray(recentSearches)) {
@@ -63,16 +63,18 @@ if (!Array.isArray(recentSearches)) {
 }
 
 function renderRecentSearches() {
-  recentSearchList.replaceChildren();
+  recentSearchSelect.replaceChildren();
+
+  const placeholder = document.createElement("option");
+  placeholder.value = "";
+  placeholder.textContent = "Recent searches…";
+  recentSearchSelect.appendChild(placeholder);
 
   recentSearches.forEach((term) => {
-    const item = document.createElement("li");
-    const button = document.createElement("button");
-    button.type = "button";
-    button.textContent = term;
-    button.dataset.searchTerm = term;
-    item.appendChild(button);
-    recentSearchList.appendChild(item);
+    const option = document.createElement("option");
+    option.value = term;
+    option.textContent = term;
+    recentSearchSelect.appendChild(option);
   });
 }
 
@@ -92,6 +94,7 @@ function runSearch(term) {
   writeStorage(SEARCH_KEY, recentSearches);
   renderRecentSearches();
   searchInput.value = cleanTerm;
+  recentSearchSelect.value = "";
 }
 
 searchForm.addEventListener("submit", (event) => {
@@ -99,11 +102,9 @@ searchForm.addEventListener("submit", (event) => {
   runSearch(searchInput.value);
 });
 
-recentSearchList.addEventListener("click", (event) => {
-  const button = event.target.closest("button[data-search-term]");
-
-  if (button) {
-    runSearch(button.dataset.searchTerm);
+recentSearchSelect.addEventListener("change", () => {
+  if (recentSearchSelect.value) {
+    runSearch(recentSearchSelect.value);
   }
 });
 
