@@ -8,7 +8,7 @@ The main project is a To-Do List built with modular JavaScript. It saves tasks a
 
 [Open my Week 7 project on GitHub Pages](https://quantums-meruit.github.io/iyf-s12-week-07-Quantums-meruit/)
 
-The home page links to the To-Do List, Shopping Cart, and Daily Challenges.
+The home page links to the To-Do List, Shopping Cart, and Daily Challenges. The live site will be available after the Pages deployment workflow runs successfully from main.
 
 ## Project features
 
@@ -59,6 +59,7 @@ Challenge data is stored locally in the browser. It is not sent to a server.
 | tests/todo-logic.test.js | Automated tests for pure task functions |
 | cart/ | Shopping Cart mini-project |
 | daily-challenges/ | Five interactive Week 7 exercises |
+| .github/workflows/ | Automated quality checks and GitHub Pages deployment |
 | eslint.config.js | ESLint 9 flat configuration |
 | .prettierrc | Shared formatting rules |
 | .gitignore | Excludes node_modules and other generated/local files |
@@ -102,6 +103,8 @@ Format the project when needed:
 
    npm run format
 
+The automated GitHub Actions quality run currently passes all 13 tests and ESLint. The Prettier formatting check is available as a separate local command and still needs to be run on the completed branch before merging.
+
 The tests cover filtering, active-task counting, toggling, deleting, adding, clearing completed tasks, editing, empty input, missing IDs, and preserving the original array.
 
 ## What I learned
@@ -125,13 +128,13 @@ The observer pattern gave me a way to keep the interface in sync with central st
 
 ## Deployment
 
-The repository includes a GitHub Actions workflow for GitHub Pages. The live link above should be treated as available once the Pages deployment workflow has completed successfully. If the page does not load, check the Actions tab for the latest deployment result and the repository's Settings → Pages configuration.
+The repository includes a GitHub Actions workflow for GitHub Pages. After the pull request is reviewed and merged into main, the workflow runs the tests and ESLint before deploying the static site. If the page does not load, check the Actions tab for the latest deployment result and the repository's Settings → Pages configuration.
 
 ## Collaboration and peer review
 
 The Week 7 guide requires a real peer review: I need to review a classmate's To-Do List pull request with inline comments and respond to the review of my own work. Those interactions must be completed with a classmate; they cannot truthfully be recorded as completed by this project documentation.
 
-- **My module-refactor pull request:** to be added after the pull request is opened and reviewed.
+- **My module-refactor pull request:** [Week 7 project PR #1](https://github.com/Quantums-meruit/iyf-s12-week-07-Quantums-meruit/pull/1) — awaiting a classmate's review.
 - **The peer review I write:** to be added after I review a classmate's actual pull request.
 
 ## Further improvements
