@@ -36,11 +36,13 @@ const cartTotal = document.querySelector("#cart-total");
 const clearCartButton = document.querySelector("#clear-cart");
 const cartMessage = document.querySelector("#cart-message");
 
-const currency = new Intl.NumberFormat("en-KE", {
-  style: "currency",
-  currency: "KES",
+const numberFormat = new Intl.NumberFormat("en-KE", {
   maximumFractionDigits: 0,
 });
+
+function formatPrice(amount) {
+  return \`KSh \${numberFormat.format(amount)}\`;
+}
 
 function subscribe(listener) {
   listeners.push(listener);
@@ -64,7 +66,7 @@ function updateCart(nextCart, message = "") {
   const saved = saveCart();
   cartMessage.textContent = saved
     ? message
-    : `${message} Changes could not be saved in this browser.`;
+    : \`\${message} Changes could not be saved in this browser.\`;
   notify();
 }
 
@@ -106,7 +108,7 @@ function renderProducts() {
 
     const price = document.createElement("span");
     price.className = "product-price";
-    price.textContent = currency.format(product.price);
+    price.textContent = formatPrice(product.price);
 
     const addButton = document.createElement("button");
     addButton.type = "button";
@@ -143,7 +145,7 @@ function renderCart() {
 
     const linePrice = document.createElement("span");
     linePrice.className = "cart-line-price";
-    linePrice.textContent = `${currency.format(product.price)} each · ${currency.format(product.price * item.quantity)}`;
+    linePrice.textContent = \`\${formatPrice(product.price)} each · \${formatPrice(product.price * item.quantity)}\`;
 
     details.append(name, linePrice);
 
@@ -156,7 +158,7 @@ function renderCart() {
     decreaseButton.dataset.action = "decrease";
     decreaseButton.dataset.productId = item.productId;
     decreaseButton.textContent = "−";
-    decreaseButton.setAttribute("aria-label", `Decrease ${product.name} quantity`);
+    decreaseButton.setAttribute("aria-label", \`Decrease \${product.name} quantity\`);
 
     const quantity = document.createElement("span");
     quantity.className = "quantity";
@@ -168,7 +170,7 @@ function renderCart() {
     increaseButton.dataset.action = "increase";
     increaseButton.dataset.productId = item.productId;
     increaseButton.textContent = "+";
-    increaseButton.setAttribute("aria-label", `Increase ${product.name} quantity`);
+    increaseButton.setAttribute("aria-label", \`Increase \${product.name} quantity\`);
 
     controls.append(decreaseButton, quantity, increaseButton);
 
@@ -184,8 +186,8 @@ function renderCart() {
   });
 
   const count = getCartCount();
-  cartCount.textContent = `${count} ${count === 1 ? "item" : "items"}`;
-  cartTotal.textContent = currency.format(getCartTotal());
+  cartCount.textContent = \`\${count} \${count === 1 ? "item" : "items"}\`;
+  cartTotal.textContent = formatPrice(getCartTotal());
   clearCartButton.disabled = count === 0;
 }
 
