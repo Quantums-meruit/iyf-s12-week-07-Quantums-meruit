@@ -51,13 +51,20 @@ function notify() {
 }
 
 function saveCart() {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(state.cart));
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(state.cart));
+    return true;
+  } catch {
+    return false;
+  }
 }
 
 function updateCart(nextCart, message = "") {
   state = { ...state, cart: nextCart };
-  saveCart();
-  cartMessage.textContent = message;
+  const saved = saveCart();
+  cartMessage.textContent = saved
+    ? message
+    : `${message} Changes could not be saved in this browser.`;
   notify();
 }
 
