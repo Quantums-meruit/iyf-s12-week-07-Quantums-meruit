@@ -119,7 +119,7 @@ I worked with Magdalene Wanyeki as my Week 7 partner. The review activity I comp
 
 - **Team / partner:** Magdalene Wanyeki ([GitHub profile](https://github.com/MagdaleneWanyeki))
 - **Shared repo:** Not applicable — no shared repository was used.
-- **PR I opened:** Not provided.
+- **PR I opened:** [Week 7 Implementation PR #1](https://github.com/Quantums-meruit/iyf-s12-week-07-Quantums-meruit/pull/1?utm_source=chatgpt.com)
 - **PR I reviewed:** [Week 7 PR #1 in Ndush-gif's repository — review](https://github.com/Ndush-gif/iyf-s12-week-07-Ndush-gif/pull/1#pullrequestreview-5897680525)
 
 The original implementation work for this project is recorded separately in [Week 7 implementation PR #1](https://github.com/Quantums-meruit/iyf-s12-week-07-Quantums-meruit/pull/1), which was merged into `main`.
