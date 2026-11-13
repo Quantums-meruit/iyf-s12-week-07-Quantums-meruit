@@ -17,8 +17,10 @@ let nextId = 1;
 let pendingToggleTimer = null;
 
 function getVisibleTodos() {
-  if (currentFilter === "active") return todos.filter((todo) => !todo.completed);
-  if (currentFilter === "completed") return todos.filter((todo) => todo.completed);
+  if (currentFilter === "active")
+    return todos.filter((todo) => !todo.completed);
+  if (currentFilter === "completed")
+    return todos.filter((todo) => todo.completed);
   return todos;
 }
 
@@ -26,9 +28,10 @@ function updateStats() {
   const remaining = todos.filter((todo) => !todo.completed).length;
   itemsLeft.textContent = `${remaining} ${remaining === 1 ? "item" : "items"} left`;
   emptyState.classList.toggle("is-visible", getVisibleTodos().length === 0);
-  emptyState.textContent = todos.length === 0
-    ? "No tasks here yet. Add one above."
-    : "No tasks match this filter.";
+  emptyState.textContent =
+    todos.length === 0
+      ? "No tasks here yet. Add one above."
+      : "No tasks match this filter.";
 }
 
 function createTodoElement(todo) {
@@ -41,7 +44,10 @@ function createTodoElement(todo) {
   checkbox.type = "checkbox";
   checkbox.className = "todo-check";
   checkbox.checked = todo.completed;
-  checkbox.setAttribute("aria-label", `Mark ${todo.text} as ${todo.completed ? "active" : "completed"}`);
+  checkbox.setAttribute(
+    "aria-label",
+    `Mark ${todo.text} as ${todo.completed ? "active" : "completed"}`,
+  );
 
   const text = document.createElement("span");
   text.className = "todo-text";
@@ -61,7 +67,9 @@ function createTodoElement(todo) {
 
 function renderTodos() {
   todoList.replaceChildren();
-  getVisibleTodos().forEach((todo) => todoList.appendChild(createTodoElement(todo)));
+  getVisibleTodos().forEach((todo) =>
+    todoList.appendChild(createTodoElement(todo)),
+  );
   updateStats();
 }
 
@@ -172,7 +180,10 @@ todoList.addEventListener("dblclick", (event) => {
 
 // Keyboard support for toggling and editing via the visible task row.
 todoList.addEventListener("keydown", (event) => {
-  if (event.target.matches(".todo-text") && (event.key === "Enter" || event.key === " ")) {
+  if (
+    event.target.matches(".todo-text") &&
+    (event.key === "Enter" || event.key === " ")
+  ) {
     event.preventDefault();
     const item = event.target.closest(".todo-item");
     toggleTodo(Number(item.dataset.id));
