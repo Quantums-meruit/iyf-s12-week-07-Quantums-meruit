@@ -8,7 +8,7 @@ The main project is a To-Do List built with modular JavaScript. It saves tasks a
 
 [Open my Week 7 project on GitHub Pages](https://quantums-meruit.github.io/iyf-s12-week-07-Quantums-meruit/)
 
-The home page links to the To-Do List, Shopping Cart, and Daily Challenges. The live site will be available after the Pages deployment workflow runs successfully from main.
+The home page links to the To-Do List, Shopping Cart, and Daily Challenges. The live site should be available after the Pages deployment workflow runs successfully from main.
 
 ## Project features
 
@@ -103,7 +103,7 @@ Format the project when needed:
 
    npm run format
 
-The automated GitHub Actions quality run currently passes all 13 tests and ESLint. The Prettier formatting check is available as a separate local command and still needs to be run on the completed branch before merging.
+The latest GitHub Actions quality run passed all 13 tests and ESLint. The Prettier formatting check is available as a local command and still needs to be run on the completed main branch.
 
 The tests cover filtering, active-task counting, toggling, deleting, adding, clearing completed tasks, editing, empty input, missing IDs, and preserving the original array.
 
@@ -128,13 +128,13 @@ The observer pattern gave me a way to keep the interface in sync with central st
 
 ## Deployment
 
-The repository includes a GitHub Actions workflow for GitHub Pages. After the pull request is reviewed and merged into main, the workflow runs the tests and ESLint before deploying the static site. If the page does not load, check the Actions tab for the latest deployment result and the repository's Settings → Pages configuration.
+The repository includes a GitHub Actions workflow for GitHub Pages. It runs tests and ESLint before deploying the static site. Check the Actions tab for the latest deployment result and Settings → Pages if the live page does not load.
 
 ## Collaboration and peer review
 
 The Week 7 guide requires a real peer review: I need to review a classmate's To-Do List pull request with inline comments and respond to the review of my own work. Those interactions must be completed with a classmate; they cannot truthfully be recorded as completed by this project documentation.
 
-- **My module-refactor pull request:** [Week 7 project PR #1](https://github.com/Quantums-meruit/iyf-s12-week-07-Quantums-meruit/pull/1) — awaiting a classmate's review.
+- **My module-refactor pull request:** [Week 7 project PR #1](https://github.com/Quantums-meruit/iyf-s12-week-07-Quantums-meruit/pull/1) — merged into main. GitHub currently shows no submitted classmate review or inline review threads on this PR, so I still need to arrange and document the required peer feedback.
 - **The peer review I write:** to be added after I review a classmate's actual pull request.
 
 ## Further improvements
