@@ -58,9 +58,9 @@ const searchResult = document.querySelector("#search-result");
 const recentSearchSelect = document.querySelector("#recent-search-select");
 
 let recentSearches = readStorage(SEARCH_KEY, []);
-if (!Array.isArray(recentSearches)) {
-  recentSearches = [];
-}
+recentSearches = Array.isArray(recentSearches)
+  ? recentSearches.filter((item) => typeof item === "string")
+  : [];
 
 function renderRecentSearches() {
   recentSearchSelect.replaceChildren();
@@ -85,13 +85,17 @@ function runSearch(term) {
     return;
   }
 
-  searchResult.textContent = `You selected: ${cleanTerm}`;
   recentSearches = recentSearches.filter(
     (item) => item.toLowerCase() !== cleanTerm.toLowerCase(),
   );
   recentSearches.unshift(cleanTerm);
   recentSearches = recentSearches.slice(0, MAX_RECENT_SEARCHES);
-  writeStorage(SEARCH_KEY, recentSearches);
+
+  const saved = writeStorage(SEARCH_KEY, recentSearches);
+  searchResult.textContent = saved
+    ? `You selected: ${cleanTerm}`
+    : `You selected: ${cleanTerm}. Browser storage is unavailable, so history was not saved.`;
+
   renderRecentSearches();
   searchInput.value = cleanTerm;
   recentSearchSelect.value = "";
@@ -149,15 +153,26 @@ const autoSaveId = window.setInterval(saveDraft, AUTO_SAVE_INTERVAL_MS);
 draftForm.addEventListener("submit", (event) => {
   event.preventDefault();
   window.clearInterval(autoSaveId);
-  localStorage.removeItem(DRAFT_KEY);
+
+  try {
+    localStorage.removeItem(DRAFT_KEY);
+  } catch {
+    draftStatus.textContent = "Submitted, but the browser could not clear the saved draft.";
+    return;
+  }
+
   draftForm.reset();
   draftStatus.textContent = "Submitted. The saved draft has been cleared.";
 });
 
 clearDraftButton.addEventListener("click", () => {
-  localStorage.removeItem(DRAFT_KEY);
-  draftForm.reset();
-  draftStatus.textContent = "Draft cleared.";
+  try {
+    localStorage.removeItem(DRAFT_KEY);
+    draftForm.reset();
+    draftStatus.textContent = "Draft cleared.";
+  } catch {
+    draftStatus.textContent = "Could not clear the saved draft in this browser.";
+  }
 });
 
 // Day 4: Refactor Challenge.
