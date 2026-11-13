@@ -3,82 +3,40 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="A simple interactive to-do list built with HTML, CSS and JavaScript."
-    />
-    <title>My To-Do List</title>
+    <meta name="description" content="A persistent, modular to-do list built with HTML, CSS and JavaScript." />
+    <title>My To-Do List | IYF Week 7</title>
     <link rel="stylesheet" href="styles.css" />
     <script type="module" src="js/app.js"></script>
   </head>
   <body>
     <main class="container">
       <header class="app-header">
-        <p class="eyebrow">WEEK 5 · DOM MANIPULATION</p>
+        <p class="eyebrow">WEEK 7 · JAVASCRIPT BEST PRACTICES</p>
         <h1>My To-Do List</h1>
         <p class="subtitle">A little progress each day adds up.</p>
       </header>
-
       <form id="todo-form" class="todo-form">
         <label class="sr-only" for="todo-input">New task</label>
-        <input
-          id="todo-input"
-          type="text"
-          placeholder="What needs to be done?"
-          autocomplete="off"
-          required
-        />
+        <input id="todo-input" type="text" placeholder="What needs to be done?" autocomplete="off" required />
         <button class="add-button" type="submit">Add task</button>
       </form>
-      <p
-        id="form-message"
-        class="form-message"
-        role="status"
-        aria-live="polite"
-      ></p>
-
+      <p id="form-message" class="form-message" role="status" aria-live="polite"></p>
       <nav class="filters" aria-label="Filter tasks">
-        <button
-          class="filter is-active"
-          type="button"
-          data-filter="all"
-          aria-pressed="true"
-        >
-          All
-        </button>
-        <button
-          class="filter"
-          type="button"
-          data-filter="active"
-          aria-pressed="false"
-        >
-          Active
-        </button>
-        <button
-          class="filter"
-          type="button"
-          data-filter="completed"
-          aria-pressed="false"
-        >
-          Completed
-        </button>
+        <button class="filter is-active" type="button" data-filter="all" aria-pressed="true">All</button>
+        <button class="filter" type="button" data-filter="active" aria-pressed="false">Active</button>
+        <button class="filter" type="button" data-filter="completed" aria-pressed="false">Completed</button>
       </nav>
-
       <ul id="todo-list" class="todo-list" aria-label="Tasks"></ul>
-      <p id="empty-state" class="empty-state">
-        No tasks here yet. Add one above.
-      </p>
-
+      <p id="empty-state" class="empty-state">No tasks here yet. Add one above.</p>
       <footer class="list-footer">
         <span id="items-left" aria-live="polite">0 items left</span>
-        <button id="clear-completed" class="clear-button" type="button">
-          Clear completed
-        </button>
+        <button id="clear-completed" class="clear-button" type="button">Clear completed</button>
       </footer>
-      <p class="edit-hint">
-        Tip: double-click a task to edit it. Press Enter to save or Escape to
-        cancel.
-      </p>
+      <p class="edit-hint">Tip: double-click a task to edit it. Press Enter to save or Escape to cancel.</p>
+      <nav class="project-links" aria-label="More Week 7 projects">
+        <a href="cart/index.html">Shopping Cart mini-project</a>
+        <a href="daily-challenges/index.html">Five Daily Challenges</a>
+      </nav>
     </main>
   </body>
 </html>
