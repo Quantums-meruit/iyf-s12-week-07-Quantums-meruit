@@ -11,6 +11,11 @@ export function getVisibleTodos(todos, filter) {
   return todos;
 }
 
+// Returns the number of tasks that are not completed.
+export function getActiveTodoCount(todos) {
+  return todos.filter((todo) => !todo.completed).length;
+}
+
 // Toggles the completed status of a task.
 export function toggleTodo(todos, id) {
   return todos.map((todo) => {
